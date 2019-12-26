@@ -66,11 +66,11 @@
 					<p ng-bind-html="trustedDescription(Kit.KitParent)" />
 				</div>
 				<!-- PRICE SCHEDULE PANEL! --->
-				<priceScheduleTable ng-if="!(user.Permissions.contains('HidePricing')) && LineItem.PriceSchedule.PriceBreaks.length > 1 && LineItem.IsKitParent" ps='LineItem.PriceSchedule' p='Kit.KitParent'/>
+				<priceScheduleTable ng-if="!(user.Permissions.contains('HidePricing')) && LineItem.PriceSchedule.PriceBreaks.length > 1 && LineItem.IsKitParent" ps='LineItem.PriceSchedule' p='Kit.KitParent' />
 			</div>
 		</div>
 		<!-- STATIC SPECS PANEL! -->
-		<staticspecstable ng-show="StaticSpecGroups && user.Permissions.contains('ViewNonCustomizableSpecs')" specgroups="StaticSpecGroups" length="LineItem.StaticSpecLength"/>
+		<staticspecstable ng-show="StaticSpecGroups && user.Permissions.contains('ViewNonCustomizableSpecs')" specgroups="StaticSpecGroups" length="LineItem.StaticSpecLength" />
 		<!-- ORDER PANEL! -->
 		<form name="addToOrderForm" novalidate="">
 			<div class="panel panel-default">
@@ -134,7 +134,7 @@
 											</div>
 											<div class="col-xs-2">
 												<div ng-show="LineItem.Variant.InteropID == v.InteropID" class="alert alert-success text-center" style="padding:5px 2px;">
-													<i class="fa fa-check"></i><br/><small>Selected</small>
+													<i class="fa fa-check"></i><br /><small>Selected</small>
 												</div>
 											</div>
 										</div>
@@ -143,8 +143,8 @@
 							</ul>
 						</div>
 						<div ng-show="ActiveKitItem.Variant.IsDefaultVariant && LineItem.Product.VariantCount > settings.pageSize">
-							<pagination ng-change="paged()" ng-model="settings.currentPage" page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="LineItem.Product.VariantCount"
-										items-per-page="settings.pageSize" direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
+							<pagination ng-change="paged()" ng-model="settings.currentPage" page="settings.currentPage" max-size="8" rotate="false" boundary-links="true" total-items="LineItem.Product.VariantCount" items-per-page="settings.pageSize"
+								direction-links="true" previous-text="{{'Previous' | xlat}}" next-text="{{'Next' | xlat}}" first-text="{{'First' | xlat}}" last-text="{{'Last' | xlat}}"></pagination>
 						</div>
 					</div>
 					<div class="form-group" ng-show="allowAddToOrder">
@@ -168,8 +168,8 @@
 							<i ng-show="lineItemErrors.length > 0" class="fa fa-warning"></i>
 							{{addToOrderText | r | xlat}}
 							<span class="badge" ng-if="!(user.Permissions.contains('HidePricing')) && (LineItem.LineTotal || variantLineItemsOrderTotal) > 0">
-                                {{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
-                            </span>
+								{{(LineItem.LineTotal || variantLineItemsOrderTotal) | culturecurrency}}
+							</span>
 						</button>
 						<div class="btn-group" role="group" ng-show="LineItem.IsKitChild">
 							<loadingindicator ng-show="addToOrderIndicator" />
@@ -188,10 +188,10 @@
 		<div class="view-error-message" ng-show="showAddToCartErrors && lineItemErrors.length > 0">
 			<ul class="alert-warning">
 				<li class="text-center">
-                    <span class="badge">
-                        <i class="fa fa-exclamation-circle fa-inverse"></i>
-                        {{lineItemErrors.length}}
-                    </span>
+					<span class="badge">
+						<i class="fa fa-exclamation-circle fa-inverse"></i>
+						{{lineItemErrors.length}}
+					</span>
 				</li>
 				<li class="text-center">
 					<ul ng-class="{'one': errorSection == 'open', 'two': errorSection == '' }">
